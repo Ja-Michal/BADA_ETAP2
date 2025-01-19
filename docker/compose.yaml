@@ -1,0 +1,9 @@
+services:
+  oracle:
+    image: gvenzl/oracle-free:23.6
+    environment:
+      - ORACLE_PASSWORD=123456
+    volumes:
+      - ./initScripts:/container-entrypoint-initdb.d
+    ports:
+      - 2137:1521
