@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assign Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Assign Services to Workshops</h1>
+    <form>
+        <!-- TODO: Formularz do przydzielania serwisów do warsztatów -->
+        <div class="mb-3">
+            <label for="service" class="form-label">Service</label>
+            <select id="service" class="form-select">
+                <option value="1">Oil Change - Ford Focus</option>
+                <option value="2">Brake Replacement - Toyota Corolla</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="workshop" class="form-label">Workshop</label>
+            <select id="workshop" class="form-select">
+                <option value="1">Main Workshop</option>
+                <option value="2">East Side Workshop</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Assign</button>
+    </form>
+    <a href="/smanager/home" class="btn btn-secondary mt-4">Back to Dashboard</a>
+</div>
+</body>
+</html>
