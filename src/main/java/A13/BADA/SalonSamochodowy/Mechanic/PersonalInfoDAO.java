@@ -8,6 +8,9 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import org.hibernate.boot.model.internal.OptionalDeterminationSecondPass;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
 
 import java.util.List;
 import java.util.Optional;

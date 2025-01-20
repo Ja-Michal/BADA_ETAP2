@@ -2,6 +2,10 @@ package A13.BADA.SalonSamochodowy.Mechanic;
 
 import A13.BADA.SalonSamochodowy.dataClasses.Employee;
 import A13.BADA.SalonSamochodowy.dataClasses.PersonalInfo;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import A13.BADA.SalonSamochodowy.dataClasses.Service;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,31 +14,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+
 import java.util.List;
 import java.util.Optional;
 
-@RestController
-@RequestMapping("/mechanik")
+@Controller
 public class MechanicController {
+
     private final PersonalInfoDAO personalInfoDAO;
     private final ServicesDAO servicesDAO;
 
-    MechanicController(PersonalInfoDAO personalInfoDAO,ServicesDAO servicesDAO){
+    public MechanicController(PersonalInfoDAO personalInfoDAO) {
         this.personalInfoDAO = personalInfoDAO;
         this.servicesDAO = servicesDAO;
     }
 
-    @GetMapping("/{id}")
-    PersonalInfo findById(@PathVariable Integer id){
-        Optional<PersonalInfo> personalInfo = personalInfoDAO.personalInfoFindByID(id);
-        if(personalInfo.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Personal data not found.");
-        }
-        return personalInfo.get();
+    @GetMapping("/mechanic/home")
+    public String mechanicHome() {
+        return "mechanicHome"; // mechanicHome.html jako widok
+    }
+    @GetMapping("/mechanic/data")
+    public String mechanicData() {
+        // TODO: Pobierz dane mechanika z bazy danych
+        return "mechanicData";
     }
 
-    @GetMapping("/serwisy/{id}")
-    List<Service> findServices(@PathVariable Integer id){
-        return servicesDAO.findServicesForWorker(id);
+    @GetMapping("/mechanic/services")
+    public String mechanicServices() {
+        // TODO: Pobierz aktywne serwisy przypisane do mechanika z bazy danych
+        return "mechanicServices";
     }
+
+    @GetMapping("/mechanic/history")
+    public String mechanicHistory() {
+        // TODO: Pobierz historię serwisów mechanika z bazy danych
+        return "mechanicHistory";
+    }
+
 }
