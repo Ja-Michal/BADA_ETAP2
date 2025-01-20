@@ -5,9 +5,11 @@ import java.util.Date;
 public record CarDB(
         Integer car_id,
         String registration,
-        Date manofactouring_date,
+        Date manufacturing_date,
         Integer millage,
-        Date inspection_date,
-        CarState state
+        Date next_inspection_date,
+        CarState technical_state,
+        Integer model_id
 ) {
 }
+

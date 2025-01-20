@@ -31,6 +31,6 @@ public record Car(
     }
 
     public Car(CarDB carDB, Brand brand, Model model){
-        this(carDB.car_id(), carDB.registration(), carDB.manofactouring_date(),carDB.millage(),carDB.inspection_date(),carDB.state(), model.model_id(), model.model_name(), brand.brand_id(), brand.brand_name());
+        this(carDB.car_id(), carDB.registration(), carDB.manufacturing_date(),carDB.millage(),carDB.next_inspection_date(),carDB.technical_state(), model.model_id(), model.model_name(), brand.brand_id(), brand.brand_name());
     }
 }

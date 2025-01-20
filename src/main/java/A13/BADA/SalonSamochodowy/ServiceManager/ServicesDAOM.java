@@ -1,5 +1,6 @@
-package A13.BADA.SalonSamochodowy.Mechanic;
+package A13.BADA.SalonSamochodowy.ServiceManager;
 
+import A13.BADA.SalonSamochodowy.Mechanic.CarsDAO;
 import A13.BADA.SalonSamochodowy.dataClasses.Car;
 import A13.BADA.SalonSamochodowy.dataClasses.Service;
 import A13.BADA.SalonSamochodowy.dataClasses.ServiceCar;
@@ -10,23 +11,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class ServicesDAO {
+public class ServicesDAOM {
     private final JdbcClient jdbcClient;
     private final CarsDAO carsDAO;
 
-    public ServicesDAO(JdbcClient jdbcClient, CarsDAO carsDAO){
+    public ServicesDAOM(JdbcClient jdbcClient, CarsDAO carsDAO){
         this.jdbcClient = jdbcClient;
         this.carsDAO = carsDAO;
     }
 
-    public List<Service> findServicesForWorker(Integer id){
-        return jdbcClient.sql("Select * from services where service_id IN (Select service_id from ASSIGNED_EMPLOYEES where employee_id = :id) and service_status != 'COMPLETED'")
+    public List<Service> findServicesForWorkshop(Integer id){
+        return jdbcClient.sql("Select * from services where location_id =:id and service_status != 'COMPLETED'")
                 .param("id",id)
                 .query(Service.class)
                 .list();
     }
-    public List<Service> findServicesForWorkerHist(Integer id){
-        return jdbcClient.sql("Select * from services where service_id IN (Select service_id from ASSIGNED_EMPLOYEES where employee_id = :id) and service_status = 'COMPLETED'")
+    public List<Service> findServicesForWorkshopHist(Integer id){
+        return jdbcClient.sql("Select * from services where location_id =:id and service_status = 'COMPLETED'")
                 .param("id",id)
                 .query(Service.class)
                 .list();
