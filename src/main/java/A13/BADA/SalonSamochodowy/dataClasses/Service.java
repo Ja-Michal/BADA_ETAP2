@@ -9,7 +9,7 @@ public record Service(
         Float cost,
         Integer car_id,
         Integer location_id,
-        ServiceStatus status,
+        ServiceStatus service_status,
         String description
 ) {
 

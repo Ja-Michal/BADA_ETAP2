@@ -78,6 +78,8 @@ echo "-- create tables section -------------------------------------------------
         description varchar2(1000 ) not null,
         car_id integer not null,
         location_id integer not null,
+        Service_status varchar2(30 ) not null
+                check (Service_status in ('WAITING', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED')),
         primary key (service_id)
       );
 

@@ -69,10 +69,10 @@ VALUES(employee_id_seq.NEXTVAL,'Florian', 'Siwicki', '230706890', 0,2,8);
 INSERT INTO employees (employee_id,name,surname,telephone_number,location_id,position_id,addres_id)
 VALUES(employee_id_seq.NEXTVAL,'Marceli', 'Nowotko', '123098456', 1,2,9);
 
-INSERT INTO services (service_id,start_date,cost,description,car_id,location_id)
-VALUES (service_id_seq.NEXTVAL,to_date('2024-11-25', 'YYYY-MM-DD'), 500.00, 'Wymiana klocków hamulcowych', 1, 1);
-INSERT INTO services (service_id,start_date,cost,description,car_id,location_id)
-VALUES (service_id_seq.NEXTVAL,to_date('2024-12-01', 'YYYY-MM-DD'), 800.00, 'Przeglad techniczny', 0, 0);
+INSERT INTO services (service_id,start_date,cost,description,car_id,location_id,Service_status)
+VALUES (service_id_seq.NEXTVAL,to_date('2025-01-25', 'YYYY-MM-DD'), 500.00, 'Wymiana klocków hamulcowych', 1, 1,'WAITING');
+INSERT INTO services (service_id,start_date,cost,description,car_id,location_id,Service_status)
+VALUES (service_id_seq.NEXTVAL,to_date('2025-01-06', 'YYYY-MM-DD'), 800.00, 'Przeglad techniczny', 0, 0,'IN_PROGRESS');
 
 INSERT INTO assigned_employees (employee_id,service_id)
 VALUES (17,1);
