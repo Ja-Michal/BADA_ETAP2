@@ -46,6 +46,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/mechanic/**").hasRole("MECHANIC")
                         .requestMatchers("/wmanager/**").hasRole("WMANAGER")
                         .requestMatchers("/smanager/**").hasRole("SMANAGER")
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
@@ -78,6 +79,8 @@ public class WebSecurityConfig {
                     } else if (role.equals("ROLE_SMANAGER")) {
                         response.sendRedirect("/smanager/home");
                         return;
+                    } else if (role.equals("ROLE_ADMIN")) {
+                        response.sendRedirect("/admin/home");
                     }
                 }
 

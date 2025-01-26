@@ -26,7 +26,10 @@ public class MainController {
                     return "redirect:/wmanager/home";
                 } else if (role.equals("ROLE_SMANAGER")) {
                     return "redirect:/smanager/home";
+                } else if (role.equals("ROLE_ADMIN")) {
+                    return "redirect:/admin/home";
                 }
+
             }
         }
         return "redirect:/main"; // Domyślne przekierowanie w razie braku dopasowania roli
