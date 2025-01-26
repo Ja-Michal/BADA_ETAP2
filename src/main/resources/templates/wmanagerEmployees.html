@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,23 +17,19 @@
         <tr>
             <th>Employee ID</th>
             <th>Name</th>
+            <th>Surname</th>
             <th>Position</th>
             <th>Phone</th>
         </tr>
         </thead>
         <tbody>
         <!-- TODO: Zastąp przykładowe dane dynamicznymi -->
-        <tr>
-            <td>1</td>
-            <td>John Doe</td>
-            <td>Mechanic</td>
-            <td>555-1234</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Jane Smith</td>
-            <td>Assistant Manager</td>
-            <td>555-5678</td>
+        <tr th:each="Em: ${Employees}">
+            <td th:text="${Em.employeeId}">employeeId</td>
+            <td th:text="${Em.name}">name</td>
+            <td th:text="${Em.surname}">surname</td>
+            <td th:text="${Em.position.position_name}">position_name</td>
+            <td th:text="${Em.telephone_number}">telephone_number</td>
         </tr>
         </tbody>
     </table>

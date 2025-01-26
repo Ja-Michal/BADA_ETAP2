@@ -22,12 +22,12 @@
         </tr>
         </thead>
         <tbody>
-        <!-- TODO: Zastąp przykładowe dane dynamicznymi -->
         <tr th:each="sc: ${serviceCar}">
             <td th:text="${sc.service_id}">service_id</td>
-            <td th:text="${sc.m_model_name}">m_model_name</td>
-            <td th:text="${sc.b_brand_name}">b_brand_name</td>
+            <td th:text="${sc.car.model.model_name}">m_model_name</td>
+            <td th:text="${sc.car.model.brand.brand_name}">b_brand_name</td>
             <td th:text="${sc.description}">description</td>
+            <td th:text="${sc.start_date}">start_date</td>
         </tr>
         </tbody>
     </table>

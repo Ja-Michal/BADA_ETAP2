@@ -1,10 +1,12 @@
-package A13.BADA.SalonSamochodowy.ServiceManager;
+package A13.BADA.SalonSamochodowy.Controlers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ServiceManagerController {
+
+
 
     @GetMapping("/smanager/home")
     public String smanagerHome() {

@@ -105,6 +105,8 @@ VALUES
 
 " >> sampledata.sql
 
+ls
+
 sqlplus -s DB_USER/123456@//localhost/FREEPDB1 @sampledata.sql
 
 rm sampledata.sql

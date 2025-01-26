@@ -1,7 +1,7 @@
 package A13.BADA.SalonSamochodowy.service;
 
 import A13.BADA.SalonSamochodowy.dataClasses.User;
-import A13.BADA.SalonSamochodowy.repository.UserRepository;
+import A13.BADA.SalonSamochodowy.Repositories.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
