@@ -1,5 +1,7 @@
 -- create tables section -------------------------------------------------
 
+
+
 -- table pracownicy
 
 create table if not exists employees(

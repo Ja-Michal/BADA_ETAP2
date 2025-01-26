@@ -20,6 +20,16 @@ echo "INSERT INTO address (addres_id,city_name,street,building_number,zip_code)
       INSERT INTO address (addres_id,city_name,street,building_number,apartment_number,zip_code)
       VALUES(addres_id_seq.NEXTVAL,'Zielonka', '1 Maja', '1', '12B', '05-220');
 
+INSERT INTO users (username, password_hash, employee_id, role)
+VALUES
+('admin', '\$2a\$10\$qnO9wekoFYzmj85EXyI9veJYp1TD.bc6wjrrqO3gam1L3xiamtG0q', 17, 'MECHANIC'),
+('john_doe', '\$2a\$10\$qnO9wekoFYzmj85EXyI9veJYp1TD.bc6wjrrqO3gam1L3xiamtG0q', 17, 'MECHANIC'),
+('jane_doe', '\$2a\$10\$qnO9wekoFYzmj85EXyI9veJYp1TD.bc6wjrrqO3gam1L3xiamtG0q', 17, 'MECHANIC');
+
+
+
+
+
       INSERT INTO locations (location_id,location_name,addres_id)
       VALUES(location_id_seq.NEXTVAL,'CZNR',0);
       INSERT INTO locations (location_id,location_name,addres_id)

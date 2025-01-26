@@ -1,27 +1,42 @@
 package A13.BADA.SalonSamochodowy;
 
+import A13.BADA.SalonSamochodowy.repository.UserRepository;
+import A13.BADA.SalonSamochodowy.service.CustomUserDetailsService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.simple.JdbcClient;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.stereotype.Service;
 
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.Collection;
 
 @Configuration
 public class WebSecurityConfig {
+
+
+    private final CustomUserDetailsService userDetailsService;
+
+    public WebSecurityConfig(CustomUserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -71,31 +86,12 @@ public class WebSecurityConfig {
             }
         };
     }
+
     @Bean
-    public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
-        UserDetails m1 =
-                User.builder()
-                        .username("m1")
-                        .password(passwordEncoder.encode("m1")) // Kodowanie hasła
-                        .roles("MECHANIC")
-                        .build();
-
-        UserDetails wmanager =
-                User.builder()
-                        .username("wmanager")
-                        .password(passwordEncoder.encode("wmanager")) // Kodowanie hasła
-                        .roles("WMANAGER")
-                        .build();
-
-        UserDetails smanager =
-                User.builder()
-                        .username("smanager")
-                        .password(passwordEncoder.encode("smanager")) // Kodowanie hasła
-                        .roles("SMANAGER")
-                        .build();
-
-        return new InMemoryUserDetailsManager(m1, wmanager, smanager);
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {

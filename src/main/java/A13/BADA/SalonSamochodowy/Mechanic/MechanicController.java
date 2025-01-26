@@ -25,6 +25,7 @@ public class MechanicController {
     private final PersonalInfoDAO personalInfoDAO;
     private final ServicesDAO servicesDAO;
 
+
     public MechanicController(PersonalInfoDAO personalInfoDAO, ServicesDAO servicesDAO) {
         this.personalInfoDAO = personalInfoDAO;
         this.servicesDAO = servicesDAO;
@@ -34,23 +35,24 @@ public class MechanicController {
     public String mechanicHome() {
         return "mechanicHome"; // mechanicHome.html jako widok
     }
+
     @GetMapping("/mechanic/data")
     public String mechanicData(Model model) {
-        PersonalInfo personalInfo = personalInfoDAO.personalInfoFindByID(17).get();
+        PersonalInfo personalInfo = personalInfoDAO.personalInfoFindByID(34).get();
         model.addAttribute("personalInfo",personalInfo);
         return "mechanicData";
     }
 
     @GetMapping("/mechanic/services")
     public String mechanicServices(Model model) {
-        List<ServiceCar> serviceCar = servicesDAO.serviceCars(servicesDAO.findServicesForWorker(17));
+        List<ServiceCar> serviceCar = servicesDAO.serviceCars(servicesDAO.findServicesForWorker(34));
         model.addAttribute("serviceCar",serviceCar);
         return "mechanicServices";
     }
 
     @GetMapping("/mechanic/history")
     public String mechanicHistory(Model model) {
-        List<ServiceCar> serviceCar = servicesDAO.serviceCars(servicesDAO.findServicesForWorkerHist(17));
+        List<ServiceCar> serviceCar = servicesDAO.serviceCars(servicesDAO.findServicesForWorkerHist(34));
         model.addAttribute("serviceCar",serviceCar);
         return "mechanicHistory";
     }
