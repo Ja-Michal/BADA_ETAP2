@@ -20,6 +20,17 @@ VALUES(addres_id_seq.NEXTVAL,'Warszawa', 'plac Defilad', '1', '2716' ,'00-901');
 INSERT INTO address (addres_id,city_name,street,building_number,apartment_number,zip_code)
 VALUES(addres_id_seq.NEXTVAL,'Zielonka', '1 Maja', '1', '12B', '05-220');
 
+INSERT INTO users (username, password_hash, employee_id, role)
+VALUES
+    ('mecha1', '\$2a\$10\$qnO9wekoFYzmj85EXyI9veJYp1TD.bc6wjrrqO3gam1L3xiamtG0q', 17, 'MECHANIC'),
+    ('wmana1', '\$2a\$10\$qnO9wekoFYzmj85EXyI9veJYp1TD.bc6wjrrqO3gam1L3xiamtG0q', 34, 'WMANAGER'),
+    ('smana1', '\$2a\$10\$qnO9wekoFYzmj85EXyI9veJYp1TD.bc6wjrrqO3gam1L3xiamtG0q', 51, 'SMANAGER'),
+    ('admin', '\$2a\$10\$qnO9wekoFYzmj85EXyI9veJYp1TD.bc6wjrrqO3gam1L3xiamtG0q', 65, 'ADMIN');
+
+
+
+
+
 INSERT INTO locations (location_id,location_name,addres_id)
 VALUES(location_id_seq.NEXTVAL,'CZNR',0);
 INSERT INTO locations (location_id,location_name,addres_id)
@@ -87,8 +98,5 @@ INSERT INTO serviced_brands (location_id,brand_id)
 VALUES (0,1);
 INSERT INTO serviced_brands (location_id,brand_id)
 VALUES (1,1);
-
-
-
 
 

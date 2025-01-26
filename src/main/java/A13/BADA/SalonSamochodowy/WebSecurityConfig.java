@@ -34,6 +34,7 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/", "/main").permitAll()
+                        .requestMatchers("/static/**", "/images/**").permitAll()
                         .requestMatchers("/mechanic/**").hasRole("MECHANIC")
                         .requestMatchers("/wmanager/**").hasRole("WMANAGER")
                         .requestMatchers("/smanager/**").hasRole("SMANAGER")
