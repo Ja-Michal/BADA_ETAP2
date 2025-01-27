@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Employee</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <h4>Edit Employee</h4>
+    </div>
+    <div class="card-body">
+      <form th:action="@{/employees/update}" th:object="${employee}" method="post">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" name="name" th:field="*{name}" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="position" class="form-label">Position</label>
+          <input type="text" class="form-control" id="position" name="position" th:field="*{position}" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="phoneNumber" class="form-label">Phone Number</label>
+          <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="expertise" class="form-label">Expertise</label>
+          <select class="form-select" id="expertise" name="expertise" th:field="*{expertise}">
+            <option value="MECHANIC" th:selected="${employee.expertise} == 'MECHANIC'">Mechanic</option>
+            <option value="ELECTRICIAN" th:selected="${employee.expertise} == 'ELECTRICIAN'">Electrician</option>
+            <option value="PAINTER" th:selected="${employee.expertise} == 'PAINTER'">Painter</option>
+          </select>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <button type="submit" class="btn btn-success">Save</button>
+          <a href="/employees" class="btn btn-secondary">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

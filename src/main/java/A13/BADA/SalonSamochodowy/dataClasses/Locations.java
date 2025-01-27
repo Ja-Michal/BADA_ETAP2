@@ -12,7 +12,7 @@ public class Locations implements Serializable {
         @SequenceGenerator(name = "location_id_seq", sequenceName = "location_id_seq",allocationSize = 1)
         private Integer locationId;
         private String location_name;
-        @ManyToOne
+        @ManyToOne(cascade = CascadeType.ALL)
         @JoinColumn(name = "addres_id")
         private Address addres;
 

@@ -1,10 +1,12 @@
 package A13.BADA.SalonSamochodowy.dataClasses;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Cars implements Serializable {
@@ -18,7 +20,7 @@ public class Cars implements Serializable {
         private Date next_inspection_date;
         @Enumerated(EnumType.STRING)
         private CarState technical_state;
-        @ManyToOne
+        @ManyToOne(cascade = CascadeType.ALL)
         @JoinColumn(name = "model_id")
         private Models model;
 
@@ -60,6 +62,34 @@ public class Cars implements Serializable {
 
         public Models getModel() {
                 return model;
+        }
+
+        public void setCar_id(Integer car_id) {
+                this.car_id = car_id;
+        }
+
+        public void setRegistration(String registration) {
+                this.registration = registration;
+        }
+
+        public void setManufacturing_date(Date manufacturing_date) {
+                this.manufacturing_date = manufacturing_date;
+        }
+
+        public void setMillage(Integer millage) {
+                this.millage = millage;
+        }
+
+        public void setNext_inspection_date(Date next_inspection_date) {
+                this.next_inspection_date = next_inspection_date;
+        }
+
+        public void setTechnical_state(CarState technical_state) {
+                this.technical_state = technical_state;
+        }
+
+        public void setModel(Models model) {
+                this.model = model;
         }
 
         @Override

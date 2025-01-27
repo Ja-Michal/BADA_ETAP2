@@ -2,6 +2,7 @@ package A13.BADA.SalonSamochodowy.dataClasses;
 
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -16,16 +17,16 @@ public class Services implements Serializable  {
         private Integer service_id;
         private Date start_date;
         private Float cost;
-        @ManyToOne
+        @ManyToOne(cascade = CascadeType.ALL)
         @JoinColumn(name = "car_id")
         private Cars car;
-        @ManyToOne
-        @JoinColumn(name = "location_id")
+        @ManyToOne(cascade = CascadeType.ALL)
+        @JoinColumn(name = "locationId")
         private Locations location;
         @Enumerated(EnumType.STRING)
         private ServiceStatus serviceStatus;
         private String description;
-        @ManyToMany
+        @ManyToMany(cascade = CascadeType.ALL)
         @JoinTable(
                 name = "assigned_employees",
                 joinColumns = @JoinColumn(name = "service_id"),
@@ -76,6 +77,38 @@ public class Services implements Serializable  {
 
         public Set<Employees> getAssignedEmployees(){return assignedEmployees;}
 
+        public void setService_id(Integer service_id) {
+                this.service_id = service_id;
+        }
+
+        public void setStart_date(Date start_date) {
+                this.start_date = start_date;
+        }
+
+        public void setCost(Float cost) {
+                this.cost = cost;
+        }
+
+        public void setCar(Cars car) {
+                this.car = car;
+        }
+
+        public void setLocation(Locations location) {
+                this.location = location;
+        }
+
+        public void setServiceStatus(ServiceStatus serviceStatus) {
+                this.serviceStatus = serviceStatus;
+        }
+
+        public void setDescription(String description) {
+                this.description = description;
+        }
+
+        public void setAssignedEmployees(Set<Employees> assignedEmployees) {
+                this.assignedEmployees = assignedEmployees;
+        }
+
         @Override
         public boolean equals(Object o) {
                 if (this == o) return true;
@@ -95,11 +128,11 @@ public class Services implements Serializable  {
                         "service_id=" + service_id +
                         ", start_date=" + start_date +
                         ", cost=" + cost +
-                        ", car=" + car.toString() +
-                        ", location=" + location.toString() +
-                        ", service_status=" + serviceStatus +
+                        ", car=" + car +
+                        ", location=" + location +
+                        ", serviceStatus=" + serviceStatus +
                         ", description='" + description + '\'' +
-                        ", assignedEmployees=" + assignedEmployees.toString() +
+                        ", assignedEmployees=" + assignedEmployees +
                         '}';
         }
 }

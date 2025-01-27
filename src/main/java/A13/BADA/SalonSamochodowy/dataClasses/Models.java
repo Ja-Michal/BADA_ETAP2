@@ -12,7 +12,7 @@ public class Models implements Serializable {
         @SequenceGenerator(name = "model_id_seq", sequenceName = "model_id_seq",allocationSize = 1)
         private Integer model_id;
         private String model_name;
-        @ManyToOne
+        @ManyToOne(cascade = CascadeType.ALL)
         @JoinColumn(name = "brand_id")
         private Brands brand;
 

@@ -41,6 +41,10 @@ public class Address implements Serializable{
                 return street;
         }
 
+        public void setAddres_id(Integer addres_id) {
+                this.addres_id = addres_id;
+        }
+
         public String getBuilding_number() {
                 return building_number;
         }

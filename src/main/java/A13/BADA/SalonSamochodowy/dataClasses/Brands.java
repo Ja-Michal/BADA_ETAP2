@@ -13,14 +13,15 @@ public class Brands implements Serializable {
         @SequenceGenerator(name = "brand_id_seq", sequenceName = "brand_id_seq", allocationSize = 1)
         private Integer brand_id;
         private String brand_name;
-        @ManyToMany(mappedBy = "serviced_brands")
+        @ManyToMany(mappedBy = "serviced_brands", cascade = CascadeType.ALL)
         private Set<Workshops> serviced_by;
 
         protected Brands() {
         }
 
-        public Brands(String brand_name) {
+        public Brands(String brand_name, Set<Workshops> serviced_by) {
                 this.brand_name = brand_name;
+                this.serviced_by = serviced_by;
         }
 
         public Integer getBrand_id() {
