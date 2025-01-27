@@ -20,16 +20,19 @@
             <th>Surname</th>
             <th>Position</th>
             <th>Phone</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
-        <!-- TODO: Zastąp przykładowe dane dynamicznymi -->
         <tr th:each="Em: ${Employees}">
             <td th:text="${Em.employeeId}">employeeId</td>
             <td th:text="${Em.name}">name</td>
             <td th:text="${Em.surname}">surname</td>
             <td th:text="${Em.position.position_name}">position_name</td>
             <td th:text="${Em.telephone_number}">telephone_number</td>
+            <td><a th:href="@{/wmanager/Employees/Edit/{Id}(Id=${Em.employeeId})}" type="button" class="btn btn-primary btn-sm">Modify</a></td>
+            <td><a th:href="@{/wmanager/Employees/Delete/{Id}(Id=${Em.employeeId})}" type="button" class="btn btn-danger btn-sm">Delete</a></td>
         </tr>
         </tbody>
     </table>

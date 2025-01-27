@@ -29,7 +29,7 @@ public class Employees implements Serializable {
         @ManyToMany(mappedBy = "assignedEmployees", cascade = CascadeType.ALL)
         private Set<Services> assigned_services;
 
-        protected Employees() {
+        public Employees() {
         }
 
         public Employees(String name, String surname, String pesel, String telephone_number, Locations location, Positions position, Address addres, Set<Services> assigned_services) {
